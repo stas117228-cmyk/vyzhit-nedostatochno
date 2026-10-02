@@ -12,7 +12,7 @@
   /* Типографика */
   --font-body: var(--font-lora), Georgia, 'Times New Roman', serif;
   --font-heading: var(--font-oswald), 'Arial Narrow', Arial, sans-serif;
-  --font-script: var(--font-script), cursive;
+  --font-script: var(--font-sign-that), 'Sign That', cursive;
   /* Примечание: --font-heading — временная замена (Oswald с кириллицей).
      Заменить на Bebas Neue Pro / Bebas Neue Cyrillic после получения файлов от заказчика.
      --font-script временно использует Dancing Script; заменить на Sign That при наличии корректного файла с кириллицей. */

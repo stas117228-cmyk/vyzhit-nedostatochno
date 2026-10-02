@@ -9,6 +9,7 @@ import SpeakingForm from '@/components/SpeakingForm';
 import { beliefs, closingBeliefQuote, disbeliefs } from '@/data/beliefs';
 import { thoughts } from '@/data/thoughts';
 import { siteConfig } from '@/data/site';
+import { signThat } from './fonts';
 import Link from 'next/link';
 import styles from './page.module.css';
 
@@ -43,7 +44,7 @@ export default function HomePage() {
             <h1 className={styles.heroTitle}>Даниил Сергеев</h1>
 
             <blockquote className={styles.heroQuote}>
-              <p className={styles.heroQuoteText}>
+              <p className={`${styles.heroQuoteText} ${signThat.className}`}>
                 «Всё происходящее в бизнесе — это отражение тебя самого»
               </p>
             </blockquote>
