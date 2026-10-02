@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import { Lora, Oswald } from 'next/font/google';
+import { Lora, Oswald, Caveat } from 'next/font/google';
 import '@/styles/globals.css';
 
 // Основной текстовый шрифт — Lora (кириллица подтверждена)
 const lora = Lora({
   subsets: ['cyrillic', 'latin'],
   weight: ['400', '700'],
-  style: ['normal', 'italic'],
+  style: ['normal'],
   variable: '--font-lora',
   display: 'swap',
 });
@@ -18,6 +18,15 @@ const oswald = Oswald({
   subsets: ['cyrillic', 'latin'],
   weight: ['400', '600', '700'],
   variable: '--font-oswald',
+  display: 'swap',
+});
+
+// Рукописный шрифт для цитаты на Hero — Caveat поддерживает кириллицу
+// ВРЕМЕННАЯ ЗАМЕНА: заменить на Sign That (.woff2 с кириллицей) после получения файла
+const caveat = Caveat({
+  subsets: ['cyrillic', 'latin'],
+  weight: ['400', '700'],
+  variable: '--font-script',
   display: 'swap',
 });
 
@@ -37,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ru" className={`${lora.variable} ${oswald.variable}`}>
+    <html lang="ru" className={`${lora.variable} ${oswald.variable} ${caveat.variable}`}>
       <body>{children}</body>
     </html>
   );

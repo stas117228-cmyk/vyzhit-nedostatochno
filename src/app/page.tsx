@@ -25,101 +25,93 @@ export default function HomePage() {
       <Header />
 
       <main>
-        {/* ───────────────────────────────────── */}
-        {/* 1. ПЕРВЫЙ ЭКРАН (HERO)               */}
-        {/* ───────────────────────────────────── */}
+        {/* ─────────────────────────────────────────── */}
+        {/* ПЕРВЫЙ ЭКРАН (HERO) — фото на весь экран   */}
+        {/* ─────────────────────────────────────────── */}
         <section className={styles.hero} aria-label="Первый экран">
-          <div className={`container ${styles.heroInner}`}>
-            <div className={styles.heroLeft}>
-              <h1 className={styles.heroTitle}>
-                Выжить
-                <br />
-                недостаточно
-              </h1>
+          {/* Фото — фон на весь экран */}
+          <div className={styles.heroBackground}>
+            <PhotoPlaceholder
+              label="Фото 1 — первый экран, горизонтальное 16/9"
+              aspectRatio="16/9"
+              className={styles.heroBgPhoto}
+            />
+            <div className={styles.heroOverlay} aria-hidden="true" />
+          </div>
 
-              <blockquote className={styles.heroQuote}>
-                <p className={styles.heroQuoteText}>
-                  «Всё происходящее в бизнесе — это отражение тебя самого»
-                </p>
-                <footer className={styles.heroQuoteAuthor}>
-                  — Даниил Сергеев
-                </footer>
-              </blockquote>
+          {/* Текст поверх фото */}
+          <div className={`container ${styles.heroContent}`}>
+            <h1 className={styles.heroTitle}>Даниил Сергеев</h1>
 
-              <ul className={styles.heroRoles} aria-label="Об авторе">
-                <li>Основатель сети агентств недвижимости</li>
-                <li>Автор книги «Выжить недостаточно»</li>
-                <li>Основатель «Рыбзаводъ»</li>
-              </ul>
-
-              <BuyGiftGroup className={styles.heroBtns} />
-            </div>
-
-            <div className={styles.heroRight}>
-              <PhotoPlaceholder
-                label="Фото 1 — первый экран"
-                aspectRatio="3/4"
-                className={styles.heroPhoto}
-              />
-            </div>
+            <blockquote className={styles.heroQuote}>
+              <p className={styles.heroQuoteText}>
+                «Всё происходящее в бизнесе — это отражение тебя самого»
+              </p>
+            </blockquote>
           </div>
         </section>
 
-        {/* ───────────────────────────────────── */}
-        {/* 2. ВЫДЕРЖКА ИЗ КНИГИ                */}
-        {/* ───────────────────────────────────── */}
+        {/* ─────────────────────────────────────────── */}
+        {/* ВЫДЕРЖКА ИЗ КНИГИ — книжный разворот       */}
+        {/* ─────────────────────────────────────────── */}
         <section
           className={styles.section}
           id="about-book"
           aria-label="Выдержка из книги"
         >
           <div className="container">
-            <SectionLabel number="01" title="Выдержка из книги" />
-            <div className={styles.excerptGrid}>
-              <div className={styles.excerptSpread}>
-                <PhotoPlaceholder
-                  label="bookSpreadIntro — разворот книги"
-                  aspectRatio="16/9"
-                />
-              </div>
-              <div className={styles.excerptText}>
-                <blockquote className={styles.excerptQuote}>
-                  <p>
-                    Эта книга не сделает тебя богаче, счастливее или успешнее
-                    сама по себе. Она вообще ничего за тебя не сделает сама.
-                    Если ты ищешь оправдания, поддержки, сочувствия или
-                    очередного подтверждения, что «виноваты обстоятельства», —
-                    можешь закрывать её прямо сейчас. Мы с тобой не
-                    договоримся.
-                  </p>
-                  <p>
-                    Эта книга для тех, кто устал жить случайно. Для тех, кто
-                    уже понял, что мотивация не работает, вдохновение быстро
-                    проходит, а красивые слова не дают результата. Для тех, кто
-                    не хочет ждать, а хочет быть причиной.
-                  </p>
-                </blockquote>
-                <div className={styles.excerptActions}>
-                  <BuyGiftGroup />
-                  <Link href="/read/intro" className={styles.readMoreLink}>
-                    Читать больше →
-                  </Link>
+            <div className={styles.bookSpreadWrap}>
+              {/* Визуализация разворота книги */}
+              <div className={styles.bookSpread}>
+                <div className={styles.bookSpreadLeft}>
+                  <PhotoPlaceholder
+                    label="bookSpreadIntro — левая страница разворота"
+                    aspectRatio="3/4"
+                    className={styles.bookSpreadPage}
+                  />
                 </div>
+                <div className={styles.bookSpreadRight}>
+                  {/* Правая страница с выделенным текстом */}
+                  <div className={styles.bookPage}>
+                    <p className={styles.bookPageText}>
+                      Эта книга не сделает тебя богаче, счастливее или успешнее
+                      сама по себе. Она вообще ничего за тебя не сделает сама.
+                      Если ты ищешь оправдания, поддержки, сочувствия или
+                      очередного подтверждения, что «виноваты обстоятельства», —
+                      можешь закрывать её прямо сейчас. Мы с тобой не
+                      договоримся.
+                    </p>
+                    <p className={styles.bookPageText}>
+                      Эта книга для тех, кто устал жить случайно. Для тех, кто
+                      уже понял, что мотивация не работает, вдохновение быстро
+                      проходит, а красивые слова не дают результата. Для тех, кто
+                      не хочет ждать, а хочет быть причиной.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Кнопки под разворотом */}
+              <div className={styles.bookSpreadActions}>
+                <BuyGiftGroup />
+                <Link href="/read/intro" className={styles.readMoreLink}>
+                  Читать больше →
+                </Link>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ───────────────────────────────────── */}
-        {/* 3. ПОЧЕМУ ПОЯВИЛАСЬ КНИГА           */}
-        {/* ───────────────────────────────────── */}
+        {/* ─────────────────────────────────────────── */}
+        {/* ПОЧЕМУ ПОЯВИЛАСЬ КНИГА                      */}
+        {/* ─────────────────────────────────────────── */}
         <section
           className={styles.section}
           id="why-book"
           aria-label="Почему появилась книга"
         >
           <div className="container">
-            <SectionLabel number="02" title="Почему появилась эта книга" />
+            <SectionLabel title="Почему появилась эта книга" />
             <div className={styles.whyGrid}>
               <div className={styles.whyPhoto}>
                 <PhotoPlaceholder
@@ -162,16 +154,16 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ───────────────────────────────────── */}
-        {/* 4. ФАКТЫ                            */}
-        {/* ───────────────────────────────────── */}
+        {/* ─────────────────────────────────────────── */}
+        {/* ФАКТЫ                                       */}
+        {/* ─────────────────────────────────────────── */}
         <section
           className={styles.section}
           id="about-author"
           aria-label="Факты о Данииле"
         >
           <div className="container">
-            <SectionLabel number="03" title="Даниил в цифрах" />
+            <SectionLabel title="Даниил в цифрах" />
             <div className={styles.factsGrid}>
               <div className={styles.factsPhoto}>
                 <PhotoPlaceholder
@@ -195,16 +187,16 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ───────────────────────────────────── */}
-        {/* 5. ВО ЧТО Я ВЕРЮ                    */}
-        {/* ───────────────────────────────────── */}
+        {/* ─────────────────────────────────────────── */}
+        {/* ВО ЧТО Я ВЕРЮ                               */}
+        {/* ─────────────────────────────────────────── */}
         <section
           className={styles.section}
           id="beliefs"
           aria-label="Во что я верю"
         >
           <div className="container">
-            <SectionLabel number="04" title="Во что я верю" />
+            <SectionLabel title="Во что я верю" />
             <div className={styles.beliefsGrid}>
               <div className={styles.beliefsPhoto}>
                 <PhotoPlaceholder
@@ -232,16 +224,16 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ───────────────────────────────────── */}
-        {/* 6. ВО ЧТО Я НЕ ВЕРЮ                */}
-        {/* ───────────────────────────────────── */}
+        {/* ─────────────────────────────────────────── */}
+        {/* ВО ЧТО Я НЕ ВЕРЮ                           */}
+        {/* ─────────────────────────────────────────── */}
         <section
           className={`${styles.section} ${styles.disbeliefsSection}`}
           id="disbeliefs"
           aria-label="Во что я не верю"
         >
           <div className="container">
-            <SectionLabel number="05" title={`Во что я\u00a0НЕ верю`} />
+            <SectionLabel title={`Во что я\u00a0НЕ верю`} />
             <div className={styles.disbeliefsGrid}>
               <div className={styles.disbeliefsPhoto}>
                 <PhotoPlaceholder
@@ -250,7 +242,7 @@ export default function HomePage() {
                 />
               </div>
               <div className={styles.disbeliefsList}>
-                {disbeliefs.map((d, i) => (
+                {disbeliefs.map((d) => (
                   <div key={d.id} className={styles.disbeliefItem}>
                     <hr className={styles.disbeliefRule} />
                     <div className={styles.disbeliefInner}>
@@ -264,18 +256,18 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ───────────────────────────────────── */}
-        {/* 7. ТРИ ОСНОВЫ БИЗНЕСА               */}
-        {/* ───────────────────────────────────── */}
+        {/* ─────────────────────────────────────────── */}
+        {/* ТРИ ОСНОВЫ БИЗНЕСА                          */}
+        {/* ─────────────────────────────────────────── */}
         <section
           className={styles.section}
           id="foundations"
           aria-label="Три основы бизнеса"
         >
           <div className="container">
-            <SectionLabel number="06" title="Три основы бизнеса" />
+            <SectionLabel title="Три основы бизнеса" />
 
-            {/* 7.1 Продажи */}
+            {/* Продажи */}
             <div className={styles.foundationBlock} id="sales">
               <div className={styles.foundationHeader}>
                 <span className={styles.foundationNum}>I</span>
@@ -298,7 +290,7 @@ export default function HomePage() {
                     влиять на него.
                   </p>
                   <blockquote className={styles.foundationQuote}>
-                    «Продажа начинается с первого „НЕТ“»
+                    «Продажа начинается с первого &quot;НЕТ&quot;»
                   </blockquote>
                   <div className={styles.foundationActions}>
                     <div className={styles.spreadPlaceholder}>
@@ -320,7 +312,7 @@ export default function HomePage() {
 
             <hr className={styles.foundationDivider} />
 
-            {/* 7.2 Управление персоналом */}
+            {/* Управление персоналом */}
             <div className={styles.foundationBlock} id="people">
               <div className={styles.foundationHeader}>
                 <span className={styles.foundationNum}>II</span>
@@ -369,7 +361,7 @@ export default function HomePage() {
 
             <hr className={styles.foundationDivider} />
 
-            {/* 7.3 Мышление */}
+            {/* Мышление */}
             <div className={styles.foundationBlock} id="mindset">
               <div className={styles.foundationHeader}>
                 <span className={styles.foundationNum}>III</span>
@@ -427,16 +419,16 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ───────────────────────────────────── */}
-        {/* 9. МЫСЛИ                            */}
-        {/* ───────────────────────────────────── */}
+        {/* ─────────────────────────────────────────── */}
+        {/* МЫСЛИ                                       */}
+        {/* ─────────────────────────────────────────── */}
         <section
           className={styles.section}
           id="thoughts-section"
           aria-label="Мысли"
         >
           <div className="container">
-            <SectionLabel number="07" title="Мысли" />
+            <SectionLabel title="Мысли" />
             <div className={styles.thoughtsGrid}>
               <div className={styles.thoughtsPhoto}>
                 <PhotoPlaceholder
@@ -445,10 +437,6 @@ export default function HomePage() {
                 />
               </div>
               <div className={styles.thoughtsList}>
-                <p className={styles.thoughtsIntro}>
-                  Раздел с короткими авторскими заметками и размышлениями.
-                  Формат — небольшие статьи.
-                </p>
                 {thoughts.map((t, i) => (
                   <article
                     key={t.slug}
@@ -486,47 +474,71 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ───────────────────────────────────── */}
-        {/* 10. БИЗНЕС-МАСТЕРСКАЯ               */}
-        {/* ───────────────────────────────────── */}
+        {/* ─────────────────────────────────────────── */}
+        {/* БИЗНЕС-МАСТЕРСКАЯ                           */}
+        {/* ─────────────────────────────────────────── */}
         <section
           className={styles.section}
           id="masterclass"
           aria-label="Бизнес-мастерская"
         >
           <div className="container">
-            <SectionLabel number="08" title="Бизнес-мастерская" />
-            <MasterclassSection />
+            <SectionLabel title="Бизнес-мастерская" />
+            <div className={styles.masterclassGrid}>
+              <div className={styles.masterclassText}>
+                <p>Иногда я разбираю бизнесы лично.</p>
+                <p>
+                  До встречи ты заполняешь подробный бриф, я изучаю его и задаю
+                  уточняющие вопросы. Поэтому эти два часа — не знакомство и не
+                  интервью. Мы сразу начинаем с того места, где тебе действительно
+                  нужна помощь.
+                </p>
+                <p>
+                  Встречаемся лично или по видеосвязи, разбираем твой бизнес и
+                  конкретный запрос. Ты уходишь с конкретными решениями и пониманием,
+                  что делать дальше.
+                </p>
+                <p>
+                  Бизнес-мастерские проходят по предварительному отбору заявок.
+                </p>
+              </div>
+              <div className={styles.masterclassPhoto}>
+                <PhotoPlaceholder
+                  label="masterclassImage — фото бизнес-мастерской"
+                  aspectRatio="4/3"
+                />
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* ───────────────────────────────────── */}
-        {/* 13. ПРИГЛАСИТЬ НА ВЫСТУПЛЕНИЕ       */}
-        {/* ───────────────────────────────────── */}
+        {/* ─────────────────────────────────────────── */}
+        {/* ПРИГЛАСИТЬ НА ВЫСТУПЛЕНИЕ                   */}
+        {/* ─────────────────────────────────────────── */}
         <section
           className={styles.section}
           id="speaking"
           aria-label="Пригласить на выступление"
         >
           <div className="container">
-            <SectionLabel number="09" title="Пригласить на выступление" />
+            <SectionLabel title="Пригласить на выступление" />
             <SpeakingSection />
           </div>
         </section>
 
-        {/* ───────────────────────────────────── */}
-        {/* 14. СОЦИАЛЬНЫЕ СЕТИ                 */}
-        {/* ───────────────────────────────────── */}
+        {/* ─────────────────────────────────────────── */}
+        {/* СОЦИАЛЬНЫЕ СЕТИ                             */}
+        {/* ─────────────────────────────────────────── */}
         <section className={styles.section} aria-label="Социальные сети">
           <div className="container">
-            <SectionLabel number="10" title="Социальные сети" />
+            <SectionLabel title="Социальные сети" />
             <SocialSection />
           </div>
         </section>
 
-        {/* ───────────────────────────────────── */}
-        {/* 15. ФИНАЛЬНЫЙ ПРИЗЫВ                */}
-        {/* ───────────────────────────────────── */}
+        {/* ─────────────────────────────────────────── */}
+        {/* ФИНАЛЬНЫЙ ПРИЗЫВ                            */}
+        {/* ─────────────────────────────────────────── */}
         <section
           className={styles.finalSection}
           aria-label="Финальный призыв"
@@ -585,32 +597,7 @@ export default function HomePage() {
   );
 }
 
-// ─── Серверные подсекции (inline, т.к. небольшие и не требуют interactivity) ─
-
-function MasterclassSection() {
-  return (
-    <div className={styles.masterclassGrid}>
-      <div className={styles.masterclassText}>
-        <p>Иногда я разбираю бизнесы лично.</p>
-        <p>
-          До встречи ты заполняешь подробный бриф, я изучаю его и задаю
-          уточняющие вопросы. Поэтому эти два часа — не знакомство и не
-          интервью. Мы сразу начинаем с того места, где тебе действительно
-          нужна помощь.
-        </p>
-        <p>
-          Встречаемся лично или по видеосвязи, разбираем твой бизнес и
-          конкретный запрос. Ты уходишь с конкретными решениями и пониманием,
-          что делать дальше.
-        </p>
-        <p>
-          Бизнес-мастерские проходят по предварительному отбору заявок.
-        </p>
-      </div>
-      <MasterclassForm />
-    </div>
-  );
-}
+// ─── Секция выступлений ───────────────────────────────────────────────────
 
 function SpeakingSection() {
   return (
@@ -624,7 +611,7 @@ function SpeakingSection() {
       <div className={styles.speakingContent}>
         <p>
           Если вы хотите, чтобы я выступил с лекцией на вашем мероприятии,
-          заполните форму обратной связи и мы это обсудим.
+          напишите мне напрямую или заполните форму ниже.
         </p>
         <SpeakingForm />
       </div>
@@ -632,17 +619,19 @@ function SpeakingSection() {
   );
 }
 
+// ─── Секция социальных сетей ─────────────────────────────────────────────
+
 function SocialSection() {
   const socials = [
     {
       key: 'telegram',
       label: 'Telegram',
-      href: siteConfig.social.telegram,
+      href: 'https://t.me/mrdaniilsergeev',
     },
     {
       key: 'instagram',
       label: 'Instagram',
-      href: siteConfig.social.instagram,
+      href: 'https://www.instagram.com/sergeev.daniil.s',
     },
     { key: 'youtube', label: 'YouTube', href: siteConfig.social.youtube },
     { key: 'vk', label: 'ВКонтакте', href: siteConfig.social.vk },
@@ -676,6 +665,5 @@ function SocialSection() {
   );
 }
 
-// Клиентские компоненты форм — импорты через отдельные файлы
-import MasterclassForm from '@/components/MasterclassForm';
+// Клиентские компоненты форм
 import SpeakingForm from '@/components/SpeakingForm';

@@ -12,9 +12,10 @@
   /* Типографика */
   --font-body: var(--font-lora), Georgia, 'Times New Roman', serif;
   --font-heading: var(--font-oswald), 'Arial Narrow', Arial, sans-serif;
+  --font-script: var(--font-script), cursive;
   /* Примечание: --font-heading — временная замена (Oswald с кириллицей).
      Заменить на Bebas Neue Pro / Bebas Neue Cyrillic после получения файлов от заказчика.
-     --font-quote временно использует Lora Italic; заменить на Sign That при наличии корректного файла с кириллицей. */
+     --font-script временно использует Dancing Script; заменить на Sign That при наличии корректного файла с кириллицей. */
 
   /* Размеры шрифтов — clamp(мобильный, предпочтительный, десктоп) */
   --text-hero: clamp(44px, 8vw, 132px);

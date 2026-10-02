@@ -41,10 +41,18 @@ h1, h2, h3, h4 {
   line-height: var(--leading-heading);
   text-transform: uppercase;
   letter-spacing: -0.01em;
+  font-style: normal;
+}
+
+/* Курсив запрещён на всём сайте */
+em, i {
+  font-style: normal;
 }
 
 p {
   max-width: 72ch;
+  text-align: justify;
+  hyphens: auto;
 }
 
 a {
