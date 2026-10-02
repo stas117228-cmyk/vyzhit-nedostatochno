@@ -1,0 +1,41 @@
+/* Глобальные переменные дизайна */
+:root {
+  /* Цвета */
+  --color-bg: #ffffff;
+  --color-text: #111111;
+  --color-text-secondary: #595959;
+  --color-divider: #d9d9d9;
+  --color-accent: #1647e8;
+  --color-black: #111111;
+  --color-white: #ffffff;
+
+  /* Типографика */
+  --font-body: var(--font-lora), Georgia, 'Times New Roman', serif;
+  --font-heading: var(--font-oswald), 'Arial Narrow', Arial, sans-serif;
+  /* Примечание: --font-heading — временная замена (Oswald с кириллицей).
+     Заменить на Bebas Neue Pro / Bebas Neue Cyrillic после получения файлов от заказчика.
+     --font-quote временно использует Lora Italic; заменить на Sign That при наличии корректного файла с кириллицей. */
+
+  /* Размеры шрифтов — clamp(мобильный, предпочтительный, десктоп) */
+  --text-hero: clamp(44px, 8vw, 132px);
+  --text-section: clamp(34px, 4.5vw, 72px);
+  --text-subsection: clamp(24px, 3vw, 48px);
+  --text-body: clamp(17px, 1.3vw, 20px);
+  --text-small: clamp(13px, 1vw, 15px);
+  --text-quote-hero: clamp(20px, 2.5vw, 32px);
+
+  /* Межстрочный интервал */
+  --leading-body: 1.65;
+  --leading-heading: 1.05;
+  --leading-tight: 0.95;
+
+  /* Отступы */
+  --gutter: clamp(20px, 5vw, 80px);
+  --section-gap: clamp(56px, 8vw, 140px);
+  --content-max: 1440px;
+  --reading-max: 68ch;
+
+  /* Анимация */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-appear: 0.5s;
+}

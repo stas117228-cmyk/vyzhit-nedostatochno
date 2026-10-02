@@ -1,0 +1,458 @@
+/* gift.module.css — стили страницы «Подарить книгу» */
+
+/* ─── Общая обёртка страницы ─────────────────────────────────────────── */
+.page {
+  background: var(--color-white);
+  color: var(--color-text);
+  min-height: 100vh;
+  padding-top: 120px;
+  padding-bottom: clamp(60px, 8vw, 120px);
+}
+
+.container {
+  width: 100%;
+  max-width: 560px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ─── Заголовок страницы ─────────────────────────────────────────────── */
+.heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-section);
+  font-weight: 700;
+  line-height: var(--leading-heading);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin-bottom: clamp(32px, 5vw, 56px);
+}
+
+/* ─── Шаг ────────────────────────────────────────────────────────────── */
+.step {
+  animation: fadeUp var(--duration-appear) var(--ease-out) both;
+}
+
+.stepHeading {
+  font-family: var(--font-heading);
+  font-size: var(--text-subsection);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: var(--leading-heading);
+  margin-bottom: 32px;
+}
+
+/* ─── Индикатор шага ─────────────────────────────────────────────────── */
+.stepIndicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.stepDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-divider);
+  transition: background 0.2s ease, width 0.2s ease;
+}
+
+.stepDotActive {
+  background: var(--color-accent);
+  width: 24px;
+  border-radius: 4px;
+}
+
+.stepDotDone {
+  background: var(--color-text);
+}
+
+.stepLabel {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--color-text-secondary);
+  margin-left: 4px;
+}
+
+/* ─── Макет открытки (шаг 1) ─────────────────────────────────────────── */
+.cardLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.cardFields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ─── Предпросмотр подарочной открытки ──────────────────────────────── */
+.giftPreview {
+  border-radius: 2px;
+  border: 1px solid var(--color-divider);
+  min-height: 200px;
+  padding: 28px 28px 22px;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.giftPreviewInner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+}
+
+.giftPreviewTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(13px, 1vw, 15px);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin: 0;
+}
+
+.giftPreviewMessage {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  margin: 0;
+  flex: 1;
+}
+
+.giftPreviewPlaceholder {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  opacity: 0.35;
+  margin: 0;
+  flex: 1;
+}
+
+.giftPreviewAuthor {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: var(--text-small);
+  opacity: 0.7;
+  margin: 0;
+  text-align: right;
+}
+
+/* ─── Селектор фона открытки ─────────────────────────────────────────── */
+.bgSelector {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bgSelectorLegend {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  padding: 0;
+  float: none;
+}
+
+.bgOptions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.bgOption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* Скрытый radio-инпут (визуально используем swatch) */
+.bgRadio {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Показываем focus-visible через родительский label */
+.bgOption:has(.bgRadio:focus-visible) .bgSwatch {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.bgSwatch {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: box-shadow 0.15s ease;
+}
+
+.bgSwatchActive {
+  box-shadow: 0 0 0 2px var(--color-white), 0 0 0 4px var(--color-accent);
+}
+
+.bgLabel {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--color-text);
+}
+
+/* ─── Форма ──────────────────────────────────────────────────────────── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Условные поля (доставка) */
+.conditionalFields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-left: 16px;
+  border-left: 2px solid var(--color-accent);
+  animation: fadeUp 0.25s var(--ease-out) both;
+}
+
+/* ─── Действия формы ─────────────────────────────────────────────────── */
+.formActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  padding-top: 8px;
+}
+
+/* ─── Кнопки ─────────────────────────────────────────────────────────── */
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: clamp(14px, 1.1vw, 17px);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  background: var(--color-black);
+  border: 2px solid var(--color-black);
+  padding: 14px 32px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btnPrimary:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.btnPrimary:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: clamp(14px, 1.1vw, 17px);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-black);
+  background: transparent;
+  border: 2px solid var(--color-black);
+  padding: 14px 32px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+  white-space: nowrap;
+}
+
+.btnSecondary:hover {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.btnSecondary:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* ─── Демо-баннер прототипа ──────────────────────────────────────────── */
+.protoBanner {
+  background: #fff8e1;
+  border: 1px solid #f0b429;
+  border-radius: 2px;
+  padding: 14px 18px;
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: #7a5200;
+  line-height: 1.55;
+  margin-bottom: 24px;
+}
+
+/* ─── Блок проверки данных ───────────────────────────────────────────── */
+.reviewSectionTitle {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  margin-bottom: 12px;
+  margin-top: 4px;
+}
+
+.reviewBlock {
+  border: 1px solid var(--color-divider);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 20px;
+  margin-bottom: 28px;
+}
+
+.reviewRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.reviewRow:last-child {
+  border-bottom: none;
+}
+
+.reviewLabel {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+.reviewValue {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--color-text);
+  text-align: right;
+}
+
+.reviewPrice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 16px;
+  background: var(--color-text);
+  color: var(--color-white);
+}
+
+.reviewPriceLabel {
+  font-family: var(--font-heading);
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.reviewPriceValue {
+  font-family: var(--font-heading);
+  font-size: var(--text-subsection);
+  font-weight: 700;
+}
+
+/* ─── Успех / Шаг 5 ──────────────────────────────────────────────────── */
+.successBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  animation: fadeUp var(--duration-appear) var(--ease-out) both;
+}
+
+.successIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border: 2px solid var(--color-text);
+  border-radius: 50%;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-text);
+  flex-shrink: 0;
+}
+
+.successHeading {
+  font-family: var(--font-heading);
+  font-size: var(--text-subsection);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: var(--leading-heading);
+}
+
+.successText {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  margin: 0;
+}
+
+.successNext {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-body);
+  margin: 0;
+}
+
+.successProtoBanner {
+  background: #fff8e1;
+  border: 1px solid #f0b429;
+  border-radius: 2px;
+  padding: 14px 18px;
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: #7a5200;
+  line-height: 1.55;
+  width: 100%;
+}
+
+/* ─── Анимация ───────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

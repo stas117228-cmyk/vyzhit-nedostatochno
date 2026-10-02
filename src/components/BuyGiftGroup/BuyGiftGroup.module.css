@@ -1,0 +1,76 @@
+.group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.buyBtn,
+.giftBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  padding: 0 32px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+/* Вариант по умолчанию */
+.default .buyBtn {
+  background: var(--color-black);
+  color: var(--color-white);
+  border: 1px solid var(--color-black);
+}
+
+.default .buyBtn:hover {
+  background: transparent;
+  color: var(--color-black);
+}
+
+.default .giftBtn {
+  background: transparent;
+  color: var(--color-black);
+  border: 1px solid var(--color-black);
+}
+
+.default .giftBtn:hover {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+/* Outlined вариант */
+.outlined .buyBtn {
+  background: transparent;
+  color: var(--color-white);
+  border: 1px solid var(--color-white);
+}
+
+.outlined .buyBtn:hover {
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
+.outlined .giftBtn {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.outlined .giftBtn:hover {
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+@media (max-width: 480px) {
+  .buyBtn,
+  .giftBtn {
+    width: 100%;
+    height: 48px;
+  }
+}

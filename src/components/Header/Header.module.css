@@ -1,0 +1,149 @@
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.97);
+  transition: box-shadow 0.2s ease;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.header.scrolled {
+  box-shadow: 0 1px 0 var(--color-divider);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: 68px;
+}
+
+.brand {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.nav {
+  flex: 1;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.navLink {
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--color-text-secondary);
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+
+.navLink:hover {
+  color: var(--color-text);
+}
+
+.buyBtn {
+  display: inline-flex;
+  align-items: center;
+  height: 38px;
+  padding: 0 20px;
+  background: var(--color-black);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 1px solid var(--color-black);
+  transition: background 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+
+.buyBtn:hover {
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
+.menuBtn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: auto;
+}
+
+.burger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 24px;
+}
+
+.burger span {
+  display: block;
+  height: 1.5px;
+  background: var(--color-text);
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 68px;
+  left: 0;
+  right: 0;
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-divider);
+  padding: 24px var(--gutter) 32px;
+  transform: translateY(-8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.25s var(--ease-out), opacity 0.2s;
+}
+
+.mobileMenu.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobileNavList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mobileNavLink {
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 5vw, 28px);
+  text-transform: uppercase;
+  color: var(--color-text);
+  letter-spacing: 0.02em;
+}
+
+.mobileBuy {
+  color: var(--color-accent);
+}
+
+@media (max-width: 900px) {
+  .nav,
+  .buyBtn {
+    display: none;
+  }
+  .menuBtn {
+    display: flex;
+  }
+}
