@@ -48,11 +48,9 @@ export default function MasterclassForm() {
   if (state === 'sent') {
     return (
       <div className={styles.success} role="status">
-        <p className={styles.successTitle}>Заявка принята в демо-режиме</p>
+        <p className={styles.successTitle}>Заявка отправлена</p>
         <p className={styles.successText}>
-          Форма работает корректно. После подключения обработчика заявки будут
-          отправляться автору. Ни одна введённая здесь данность не сохранена и
-          не передана.
+          Спасибо! Я свяжусь с вами в ближайшее время.
         </p>
         <button
           className={styles.resetBtn}
@@ -86,10 +84,6 @@ export default function MasterclassForm() {
           noValidate
           aria-label="Заявка на бизнес-мастерскую"
         >
-          <div className={styles.protoBanner} role="status">
-            Демо-режим — заявка не отправляется
-          </div>
-
           <FormField
             id="mc-name"
             name="name"

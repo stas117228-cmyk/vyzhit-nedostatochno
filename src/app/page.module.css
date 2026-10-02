@@ -79,75 +79,78 @@
   border-top: 1px solid var(--color-divider);
 }
 
-/* ─── BOOK SPREAD (ВЫДЕРЖКА) ─────────────────── */
-.bookSpreadWrap {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(32px, 4vw, 56px);
+/* ─── BOOK SPREAD (РАЗВОРОТ 16:9 НА ВЕСЬ ЭКРАН) ── */
+.spreadSection {
+  padding-block: var(--section-gap);
+  border-top: 1px solid var(--color-divider);
+  background-color: #ededed;
 }
 
-.bookSpread {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.14);
-  border-radius: 2px;
+.spreadContainer {
+  position: relative;
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.spreadFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 4px;
   overflow: hidden;
-  max-width: 1000px;
+  box-shadow: 0 16px 56px rgba(0, 0, 0, 0.16);
+  background-color: #e5e5e5;
 }
 
-.bookSpreadLeft {
-  /* левая страница — фото/иллюстрация */
-}
-
-.bookSpreadPage {
+.spreadImage {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.bookSpreadRight {
-  background: #fafaf8;
-  border-left: 1px solid #e0ddd8;
-}
-
-/* Имитация книжной страницы */
-.bookPage {
-  padding: clamp(32px, 5vw, 64px) clamp(24px, 4vw, 56px);
+/* Кнопки прямо в конце второй страницы разворота */
+.spreadPageActions {
+  position: absolute;
+  left: 54%;
+  right: 5%;
+  bottom: 4%;
   display: flex;
-  flex-direction: column;
-  gap: 28px;
-  height: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  z-index: 10;
 }
 
-.bookPageText {
-  font-family: var(--font-body);
-  font-size: clamp(15px, 1.2vw, 18px);
-  line-height: 1.75;
-  color: #1a1a1a;
-  max-width: none;
-  text-align: justify;
-  hyphens: auto;
-}
-
-.bookSpreadActions {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: flex-start;
-}
-
-.readMoreLink {
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+.continueReadBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  background-color: var(--color-accent);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: clamp(12px, 1.1vw, 15px);
+  font-weight: 600;
   text-transform: uppercase;
-  color: var(--color-accent);
+  letter-spacing: 0.05em;
+  border-radius: 2px;
   text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(22, 71, 232, 0.35);
+  transition: transform 0.15s, background-color 0.15s;
 }
 
-.readMoreLink:hover {
-  text-decoration: underline;
+.continueReadBtn:hover {
+  background-color: #0d38c7;
+  transform: translateY(-1px);
+}
+
+.spreadBuyBtns {
+  /* inherit from BuyGiftGroup */
 }
 
 /* ─── WHY BOOK ──────────────────────────── */
@@ -537,12 +540,12 @@
   border-color: var(--color-accent);
 }
 
-/* ─── MASTERCLASS (без формы) ────────────── */
-.masterclassGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(32px, 5vw, 80px);
-  align-items: start;
+/* ─── MASTERCLASS (без фото, с кнопкой формы) ─── */
+.masterclassContent {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 68ch;
 }
 
 .masterclassText {
@@ -561,8 +564,8 @@
   hyphens: auto;
 }
 
-.masterclassPhoto {
-  /* фото мастерской */
+.masterclassFormWrap {
+  margin-top: 8px;
 }
 
 /* ─── SPEAKING ──────────────────────── */
@@ -722,12 +725,18 @@
     font-size: clamp(18px, 5vw, 26px);
   }
 
-  .bookSpread {
-    grid-template-columns: 1fr;
+  .spreadSection {
+    padding-block: 40px;
   }
 
-  .bookSpreadLeft {
-    display: none;
+  .spreadPageActions {
+    position: static;
+    width: 100%;
+    margin-top: 18px;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    justify-content: center;
   }
 
   .whyGrid,
@@ -735,7 +744,6 @@
   .beliefsGrid,
   .disbeliefsGrid,
   .thoughtsGrid,
-  .masterclassGrid,
   .speakingGrid,
   .finalGrid {
     grid-template-columns: 1fr;

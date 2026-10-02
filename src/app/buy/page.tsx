@@ -14,7 +14,6 @@
 
 import { useState, useCallback } from 'react';
 import Header from '@/components/Header';
-import PrototypeBanner from '@/components/PrototypeBanner';
 import FormField from '@/components/FormField';
 import BuyGiftGroup from '@/components/BuyGiftGroup';
 import { siteConfig } from '@/data/site';
@@ -158,7 +157,6 @@ export default function BuyPage() {
 
   return (
     <>
-      {isPrototype && <PrototypeBanner />}
       <Header />
 
       <main className={styles.page}>

@@ -48,10 +48,9 @@ export default function SpeakingForm() {
   if (state === 'sent') {
     return (
       <div className={styles.success} role="status">
-        <p className={styles.successTitle}>Заявка принята в демо-режиме</p>
+        <p className={styles.successTitle}>Заявка отправлена</p>
         <p className={styles.successText}>
-          После подключения обработчика заявки будут поступать автору.
-          Введённые данные не сохранены.
+          Спасибо за интерес! Я свяжусь с вами в ближайшее время.
         </p>
         <button
           className={styles.resetBtn}
@@ -87,9 +86,6 @@ export default function SpeakingForm() {
           noValidate
           aria-label="Форма приглашения на выступление"
         >
-          <div className={styles.protoBanner} role="status">
-            Демо-режим — заявка не отправляется
-          </div>
 
           <FormField
             id="sp-name"

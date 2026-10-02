@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Header from '@/components/Header';
-import PrototypeBanner from '@/components/PrototypeBanner';
 import BuyGiftGroup from '@/components/BuyGiftGroup';
 import SectionLabel from '@/components/SectionLabel';
 import PhotoPlaceholder from '@/components/PhotoPlaceholder';
+import MasterclassForm from '@/components/MasterclassForm';
+import SpeakingForm from '@/components/SpeakingForm';
 import { beliefs, closingBeliefQuote, disbeliefs } from '@/data/beliefs';
 import { thoughts } from '@/data/thoughts';
 import { siteConfig } from '@/data/site';
@@ -16,17 +18,14 @@ export const metadata: Metadata = {
     'Авторский лендинг книги Даниила Сергеева «Выжить недостаточно» — о продажах, управлении людьми и предпринимательском мышлении.',
 };
 
-const isPrototype = siteConfig.siteMode === 'prototype';
-
 export default function HomePage() {
   return (
     <>
-      {isPrototype && <PrototypeBanner />}
       <Header />
 
       <main>
         {/* ─────────────────────────────────────────── */}
-        {/* ПЕРВЫЙ ЭКРАН (HERO) — фото на весь экран   */}
+        {/* 1. ПЕРВЫЙ ЭКРАН (HERO) — фото на весь экран */}
         {/* ─────────────────────────────────────────── */}
         <section className={styles.hero} aria-label="Первый экран">
           {/* Фото — фон на весь экран */}
@@ -52,51 +51,28 @@ export default function HomePage() {
         </section>
 
         {/* ─────────────────────────────────────────── */}
-        {/* ВЫДЕРЖКА ИЗ КНИГИ — книжный разворот       */}
+        {/* 2. РАЗВОРОТ КНИГИ (16:9 фото на весь экран)*/}
         {/* ─────────────────────────────────────────── */}
         <section
-          className={styles.section}
+          className={styles.spreadSection}
           id="about-book"
-          aria-label="Выдержка из книги"
+          aria-label="Разворот книги"
         >
-          <div className="container">
-            <div className={styles.bookSpreadWrap}>
-              {/* Визуализация разворота книги */}
-              <div className={styles.bookSpread}>
-                <div className={styles.bookSpreadLeft}>
-                  <PhotoPlaceholder
-                    label="bookSpreadIntro — левая страница разворота"
-                    aspectRatio="3/4"
-                    className={styles.bookSpreadPage}
-                  />
-                </div>
-                <div className={styles.bookSpreadRight}>
-                  {/* Правая страница с выделенным текстом */}
-                  <div className={styles.bookPage}>
-                    <p className={styles.bookPageText}>
-                      Эта книга не сделает тебя богаче, счастливее или успешнее
-                      сама по себе. Она вообще ничего за тебя не сделает сама.
-                      Если ты ищешь оправдания, поддержки, сочувствия или
-                      очередного подтверждения, что «виноваты обстоятельства», —
-                      можешь закрывать её прямо сейчас. Мы с тобой не
-                      договоримся.
-                    </p>
-                    <p className={styles.bookPageText}>
-                      Эта книга для тех, кто устал жить случайно. Для тех, кто
-                      уже понял, что мотивация не работает, вдохновение быстро
-                      проходит, а красивые слова не дают результата. Для тех, кто
-                      не хочет ждать, а хочет быть причиной.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Кнопки под разворотом */}
-              <div className={styles.bookSpreadActions}>
-                <BuyGiftGroup />
-                <Link href="/read/intro" className={styles.readMoreLink}>
-                  Читать больше →
+          <div className={styles.spreadContainer}>
+            <div className={styles.spreadFrame}>
+              <Image
+                src="/images/book-spread.jpg"
+                alt="Разворот книги: Введение — Выжить недостаточно"
+                width={1024}
+                height={576}
+                priority
+                className={styles.spreadImage}
+              />
+              <div className={styles.spreadPageActions}>
+                <Link href="/read/intro" className={styles.continueReadBtn}>
+                  Продолжить читать →
                 </Link>
+                <BuyGiftGroup className={styles.spreadBuyBtns} />
               </div>
             </div>
           </div>
@@ -484,31 +460,7 @@ export default function HomePage() {
         >
           <div className="container">
             <SectionLabel title="Бизнес-мастерская" />
-            <div className={styles.masterclassGrid}>
-              <div className={styles.masterclassText}>
-                <p>Иногда я разбираю бизнесы лично.</p>
-                <p>
-                  До встречи ты заполняешь подробный бриф, я изучаю его и задаю
-                  уточняющие вопросы. Поэтому эти два часа — не знакомство и не
-                  интервью. Мы сразу начинаем с того места, где тебе действительно
-                  нужна помощь.
-                </p>
-                <p>
-                  Встречаемся лично или по видеосвязи, разбираем твой бизнес и
-                  конкретный запрос. Ты уходишь с конкретными решениями и пониманием,
-                  что делать дальше.
-                </p>
-                <p>
-                  Бизнес-мастерские проходят по предварительному отбору заявок.
-                </p>
-              </div>
-              <div className={styles.masterclassPhoto}>
-                <PhotoPlaceholder
-                  label="masterclassImage — фото бизнес-мастерской"
-                  aspectRatio="4/3"
-                />
-              </div>
-            </div>
+            <MasterclassSection />
           </div>
         </section>
 
@@ -597,6 +549,35 @@ export default function HomePage() {
   );
 }
 
+// ─── Секция бизнес-мастерской ─────────────────────────────────────────────
+
+function MasterclassSection() {
+  return (
+    <div className={styles.masterclassContent}>
+      <div className={styles.masterclassText}>
+        <p>Иногда я разбираю бизнесы лично.</p>
+        <p>
+          До встречи ты заполняешь подробный бриф, я изучаю его и задаю
+          уточняющие вопросы. Поэтому эти два часа — не знакомство и не
+          интервью. Мы сразу начинаем с того места, где тебе действительно
+          нужна помощь.
+        </p>
+        <p>
+          Встречаемся лично или по видеосвязи, разбираем твой бизнес и
+          конкретный запрос. Ты уходишь с конкретными решениями и пониманием,
+          что делать дальше.
+        </p>
+        <p>
+          Бизнес-мастерские проходят по предварительному отбору заявок.
+        </p>
+      </div>
+      <div className={styles.masterclassFormWrap}>
+        <MasterclassForm />
+      </div>
+    </div>
+  );
+}
+
 // ─── Секция выступлений ───────────────────────────────────────────────────
 
 function SpeakingSection() {
@@ -664,6 +645,3 @@ function SocialSection() {
     </div>
   );
 }
-
-// Клиентские компоненты форм
-import SpeakingForm from '@/components/SpeakingForm';
