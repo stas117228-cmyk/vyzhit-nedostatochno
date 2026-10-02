@@ -52,29 +52,31 @@ export default function HomePage() {
         </section>
 
         {/* ─────────────────────────────────────────── */}
-        {/* 2. РАЗВОРОТ КНИГИ (16:9 фото на весь экран)*/}
+        {/* 2. РАЗВОРОТ КНИГИ (фото на весь экран)      */}
         {/* ─────────────────────────────────────────── */}
         <section
           className={styles.spreadSection}
           id="about-book"
           aria-label="Разворот книги"
         >
-          <div className={styles.spreadContainer}>
-            <div className={styles.spreadFrame}>
-              <Image
-                src="/images/book-spread.jpg"
-                alt="Разворот книги: Введение — Выжить недостаточно"
-                width={1024}
-                height={576}
-                priority
-                className={styles.spreadImage}
-              />
-              <div className={styles.spreadPageActions}>
-                <Link href="/read/intro" className={styles.continueReadBtn}>
-                  Продолжить читать →
-                </Link>
-                <BuyGiftGroup className={styles.spreadBuyBtns} />
-              </div>
+          {/* Фото разворота — на весь экран блока */}
+          <div className={styles.spreadBackground}>
+            <Image
+              src="/images/book-spread.jpg"
+              alt="Разворот книги: Введение — Выжить недостаточно"
+              fill
+              priority
+              className={styles.spreadPhoto}
+            />
+          </div>
+
+          {/* Кнопки в конце второй страницы */}
+          <div className={`container ${styles.spreadContent}`}>
+            <div className={styles.spreadPageActions}>
+              <Link href="/read/intro" className={styles.continueReadBtn}>
+                Продолжить читать →
+              </Link>
+              <BuyGiftGroup className={styles.spreadBuyBtns} />
             </div>
           </div>
         </section>
