@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Header from '@/components/Header';
+import BookSpread from '@/components/BookSpread';
 import BuyGiftGroup from '@/components/BuyGiftGroup';
 import SectionLabel from '@/components/SectionLabel';
 import PhotoPlaceholder from '@/components/PhotoPlaceholder';
@@ -52,34 +52,9 @@ export default function HomePage() {
         </section>
 
         {/* ─────────────────────────────────────────── */}
-        {/* 2. РАЗВОРОТ КНИГИ (фото на весь экран)      */}
+        {/* 2. РАЗВОРОТ КНИГИ (HTML/CSS Lora)           */}
         {/* ─────────────────────────────────────────── */}
-        <section
-          className={styles.spreadSection}
-          id="about-book"
-          aria-label="Разворот книги"
-        >
-          {/* Фото разворота — на весь экран блока */}
-          <div className={styles.spreadBackground}>
-            <Image
-              src="/images/book-spread.jpg"
-              alt="Разворот книги: Введение — Выжить недостаточно"
-              fill
-              priority
-              className={styles.spreadPhoto}
-            />
-          </div>
-
-          {/* Кнопки в конце второй страницы */}
-          <div className={`container ${styles.spreadContent}`}>
-            <div className={styles.spreadPageActions}>
-              <Link href="/read/intro" className={styles.continueReadBtn}>
-                Продолжить читать →
-              </Link>
-              <BuyGiftGroup className={styles.spreadBuyBtns} />
-            </div>
-          </div>
-        </section>
+        <BookSpread />
 
         {/* ─────────────────────────────────────────── */}
         {/* ПОЧЕМУ ПОЯВИЛАСЬ КНИГА                      */}

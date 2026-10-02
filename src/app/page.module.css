@@ -81,89 +81,6 @@
   border-top: 1px solid var(--color-divider);
 }
 
-/* ─── BOOK SPREAD (ФОТО НА ВЕСЬ ЭКРАН) ───────── */
-.spreadSection {
-  position: relative;
-  width: 100%;
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  overflow: hidden;
-  border-top: 1px solid var(--color-divider);
-  background-color: #ededed;
-}
-
-.spreadBackground {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.spreadPhoto {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: contain !important;
-  display: block;
-}
-
-.spreadContent {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: var(--content-max);
-  margin-inline: auto;
-  padding-inline: var(--gutter);
-  padding-bottom: clamp(16px, 2.5vh, 32px);
-  display: flex;
-  justify-content: flex-end;
-}
-
-.spreadPageActions {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 10px 16px;
-  border-radius: 6px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.continueReadBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 24px;
-  background-color: var(--color-accent);
-  color: #ffffff;
-  font-family: var(--font-heading);
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border-radius: 3px;
-  text-decoration: none;
-  white-space: nowrap;
-  box-shadow: 0 4px 14px rgba(22, 71, 232, 0.35);
-  transition: transform 0.15s, background-color 0.15s;
-}
-
-.continueReadBtn:hover {
-  background-color: #0d38c7;
-  transform: translateY(-2px);
-}
-
-.spreadBuyBtns {
-  /* inherit from BuyGiftGroup */
-}
 
 /* ─── WHY BOOK ──────────────────────────── */
 .whyGrid {
@@ -737,21 +654,6 @@
     font-size: clamp(18px, 5vw, 26px);
   }
 
-  .spreadSection {
-    min-height: 100svh;
-  }
-
-  .spreadContent {
-    padding-bottom: 24px;
-    justify-content: center;
-  }
-
-  .spreadPageActions {
-    width: 100%;
-    justify-content: center;
-    flex-direction: column;
-    gap: 12px;
-  }
 
   .whyGrid,
   .factsGrid,
